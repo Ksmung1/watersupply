@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>moonfund</title>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          <link rel="stylesheet" href="styles.css">
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+          rel="stylesheet">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+          <script src="https://kit.fontawesome.com/fa7c57b840.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+
+          <div class="navbar">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+                              <a class="navbar-brand" href="#"><h3 id="usernameofuser" style="color: white; background-color: rgb(36, 36, 197);border-radius: 10px;"></h3></a>
+                              
+                            </nav>
+          </div>
+
+          
+<div class="big-container">
+
+          <div class="col">
+          <div class="starting">
+                    <div class="starting-image">
+                              <img src="" alt="">
+                    </div>
+                    <div class="starting-info">
+                      <span class="material-symbols-sharp">
+                        water_drop
+                        </span>                              <h1 class="title">Driking water</h1>
+                              
+                              <div class="blueoutline" style=" border-radius: 5px;line-height:1.01; font-weight: 500; margin-bottom: 3px; margin-top: 5px;"><p ><span class="span" style="background-color: #24A0ED; border-radius: 10px;"> <span > ‎ ‎ </span>  Welcome to Watersupply!  <span> ‎ ‎ </span> </span></p></div><p class="pother">The easy and accessible wealth management platform for smart investing.</p>
+                    </div>
+          </div>
+          </div>
+
+           
+                  
+                    <div class="contacts">
+                              <div class="container">
+                                        <p >Tui don in. Fast supply</p>
+                                       
+
+                              </div>
+                    </div>
+
+                
+                  <div class="order">
+                    <button class="btn btn-primary btn-lg " id="order-water">Order water</button>
+                  </div>
+
+
+                  <div class="order-popup activez">
+                      <div class="order-header">
+                        <h3>Order 
+                          <span class="material-symbols-sharp">
+                          close
+                          </span>
+                        </h3>
+                        
+                      </div>
+                      <div >
+                        <form action="">
+                          <label for="name">Name:</label>
+                          <input type="text" name="name" id="name" required><br>
+                          
+                          <label for="quantity">Quantity:</label>
+                          <input type="number" name="quantity" id="quantity" max="10" min="1" pattern="\d*" required><br>
+                          
+                          <label for="phone">Phone Number:</label>
+                          <input type="tel" name="phone" id="phone" ><br>
+                          <label for="address">Address:</label>
+                          <input type="text" name="address" id="address" required>
+                          <h1 id="map"></h1>
+                          <label for="quantity-display">Total amount</label><h6 style="color:rgb(255, 0, 0)"id="quantity-display">Rs.0</h6>
+                          
+
+                       
+                        
+                      <div class="order-footer">
+                        <p style="color: red;">Please note that you cannot cancel an order once it has been ordered.</p>
+                        <input type="checkbox" required>
+                        <input type="submit" value="Place order">
+                      </div>
+                    </form>
+                  </div>
+                  </div>
+
+                  <div class="container">
+                  <div class="popup">
+                    <div class="items">
+                          <h1>COMING SOON!</h1>
+                    </div>
+                  </div>
+                  </div>
+
+
+          <div class="contuiner activez">
+                    <div class="chat-header">
+                              <div class="chatlogo">
+                                        <img src="https://ozonetel.com/wp-content/uploads/2021/02/voicebot.jpg" alt="">
+                              </div>
+                              <div class="chat-title">Let's Chat</div>
+                              <div id="exit-chat">
+                                <h1>X</h1>
+                              </div>
+                    </div>
+                    <div class="chat-body">
+                      <div class="loading ">
+                        <div class="circle circle1"></div>
+                        <div class="circle circle2"></div>
+                        <div class="circle circle3"></div>
+                      </div>
+                    </div>
+                    <div class="chat-input">
+                              <div class="input-sec">
+                                        <input id="txtInput" type="text" placeholder="type here" autofocus style="border:none; outline: none; padding-left: 2px;">
+                              </div>
+                              <div class="send">
+                                        <img src="images/send.svg" alt="send">
+                              </div>
+                    </div>
+          </div>
+</div>
+
+<button id="orders-list" class="btn btn-success btn-sm">orders</button>
+
+<div id="checkorders">
+  <div class="my-orders">
+    <div class="card">
+      <span>name</span>
+      <span>amount</span>
+      <span>phone</span>
+      <span>address</span>
+      <span>cost</span>
+      <span>status</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="logout">
+  <button class="btn btn-danger btn-sm " id="logout">Log out</button>
+  <p class="loggingout"></p>
+</div>
+
+
+
+
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-database.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+
+    $(".material-symbols-sharp").on("click", ()=>{
+      $(".order-popup").toggle("activez");
+    })
+    $("#order-water").on("click", function () {        
+      $(".order-popup").toggle("activez");
+    });
+
+    $("#collapsebar").on("click", function () {
+      $(".contuiner").toggle("activez");
+    });
+
+</script>
+
+<script type="module">
+
+
+       // Import the functions you need from the SDKs you need
+       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+          import { getDatabase, set, ref, update, onValue, push, remove } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+          import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+          // TODO: Add SDKs for Firebase products that you want to use
+          // https://firebase.google.com/docs/web/setup#available-libraries
+        
+          // Your web app's Firebase configuration
+          const firebaseConfig = {
+            apiKey: "AIzaSyCeKm8nwbvYI__ZtYqrEz7cOcSz1LLVeEA",
+            authDomain: "waterorders-91fbc.firebaseapp.com",
+            projectId: "waterorders-91fbc",
+            storageBucket: "waterorders-91fbc.appspot.com",
+            messagingSenderId: "296690198089",
+            appId: "1:296690198089:web:e8e160d355141495ec0198"
+          };
+        
+          // Initialize Firebase
+          const app = initializeApp(firebaseConfig);
+          const db = getDatabase(app);
+          const auth = getAuth(app);
+          const ordersRef = ref(db, 'orders');
+          const usernameElement = document.getElementById("usernameofuser")
+          
+// create a reference to the 'orders' node in the Firebase Realtime Database
+          //  const dbRef = firebase.database().ref('orders');
+
+
+
+
+
+           const user = auth.currentUser;
+           window.onload = function(){
+                      onAuthStateChanged(auth, (user) => {
+                        if (user) {
+      // User is signed in, retrieve the user's username from the database
+                                const uid = user.uid;
+                                const usersRef = ref(db, "users/" + uid + "/username");
+                                
+
+                                onValue(usersRef, (snapshot) => {
+                                  const username = snapshot.val();
+                                  console.log(username);
+
+                                  // render the username on the page
+                                  usernameElement.innerText = username;
+
+
+
+                          // create a reference to the 'orders' node for the current user in the Firebase Realtime Database
+                          const userOrdersRef = ref(db, `users/${uid}/orders`);
+
+                                        // select the form element and add a submit event listener to it
+                                        const form = document.querySelector('form');
+                                        form.addEventListener('submit', (event) => {
+                                          event.preventDefault(); // prevent the default form submission behavior
+
+                                          // serialize the form data into an array of objects
+                                          const formData = $(form).serializeArray();
+
+                                          // reduce the form data array into a single object
+                                          const formDataObj = formData.reduce((obj, field) => {
+                                            obj[field.name] = field.value;
+                                            
+                                            return obj;
+                                          }, {});
+
+                                          // save the form data object to the Firebase Realtime Database under the user's orders node
+                                          push(userOrdersRef, formDataObj, (error) => {
+                                            if (error) {
+                                              console.error(error);
+                                            } else {
+                                              console.log('Order saved successfully!');
+                                            }
+                                          }).then((newRef)=>{
+                                            const orderId = newRef.key;
+                                            console.log(orderId)
+                                            formDataObj.id = orderId
+                                            set(child(userOrdersRef, orderId), formDataObj);
+                                          })
+                                   
+                                          console.log("Success order")
+                                       
+                                          // reset the form inputs after saving data
+                                          form.reset();
+                                          $(".order-popup").toggle("activez");
+                                       
+
+
+                    
+                          
+
+
+});
+
+
+                                                                                      
+                                      // select the 'My Orders' button and set up a click event listener
+$("#orders-list").on("click", () => {
+  // select the 'checkorders' element and toggle the 'activez' class to show/hide it
+  $("#checkorders").toggle("activez");
+setToViewOrders()
+  console.log("I got clicked");
+
+
+});
+
+  // retrieve all data from the 'orders' inside users with uid node in the Firebase Realtime Database
+  // set up a listener to retrieve the orders data and render it to the view
+  function setToViewOrders(){
+onValue(userOrdersRef, (snapshot) => {
+    const data = snapshot.val();
+    // loop through all items in the data object and render them to the view
+    for (const key in data) {
+      if (Object.hasOwnProperty.call(data, key)) {
+        const order = data[key];
+        // render the order item to the view
+        renderOrder(order, key);
+      }
+    }
+  });
+}
+// declare the counter variable outside the renderOrder function// define getNextCount function outside of renderOrder
+let counter = 0;
+
+function getNextCount() {
+  counter++;
+  return counter;
+}
+
+function renderOrder(order, key) {
+  // select the element to which the order item will be appended
+  const placedOrders = document.querySelector('.my-orders');
+
+  // check if the order already exists in the view by looking for a card element with the same unique ID
+  const existingOrder = placedOrders.querySelector(`[data-id="${key}"]`);
+
+  // if the order already exists, do nothing and return
+  if (existingOrder) {
+    return;
+  }
+
+  // create a new card element to display the order item
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  // create elements to display the order data (name, quantity, phone, address)
+  const sno = document.createElement('span');
+  sno.textContent = getNextCount(); // use the getNextCount function to get the next count
+
+  const name = document.createElement('span');
+  name.textContent = order.name;
+
+  const quantity = document.createElement('span');
+  quantity.textContent = order.quantity;
+
+  const phone = document.createElement('span');
+  phone.textContent = order.phone;
+
+  const address = document.createElement('span');
+  address.textContent = order.address;
+
+  const cost = "Rs." + order.quantity * 50;
+
+  const status = document.createElement('span')
+  status.classList.add("success")
+
+  // append the order data elements to the card element
+  card.append(sno, name, quantity, phone, address, cost, status);
+
+  // add a unique ID to the item using the 'key' property
+  card.setAttribute('data-id', key);
+
+  // add a click event listener to the card element
+ 
+// add a click event listener to the card element
+card.addEventListener('click', () => {
+  const orderRef = ref(db, `/users/${uid}/orders/+${key}`);
+  console.log('Double-click event fired!');
+  console.log('Order key:', key);
+  console.log('Order ref:', orderRef);
+
+  // remove the order from the database
+  console.log('Removing order from database...');
+  remove(orderRef)
+    .then(() => {
+      console.log('Order successfully deleted from database');
+    })
+    .catch((error) => {
+      console.error('Error deleting order:', error);
+    });
+  
+  // remove the order from the DOM
+  const order = document.querySelector(`[data-id="${key}"]`);
+  if (order) {
+    order.remove();
+    console.log('Order successfully removed from DOM');
+  } else {
+    console.log(`Could not find order with key ${key} in DOM`);
+  }
+});
+
+
+  // append the card element to the orders container element
+  placedOrders.append(card);
+}
+
+
+
+
+             
+                                       
+
+
+
+
+
+
+
+                                      });
+                                      // get crrently used user with user object 
+                                    } else {
+                                      // User is signed out
+                                      console.log("user is not signed it")
+                                      window.location.replace("login.html");
+                                       // 
+                                    }
+                            });
+
+                            $("#logout").on("click",  (e) => {
+            signOut(auth).then(() => {
+  // Sign-out successful.
+                        console.log("User log out");
+                              window.location.href = "login.html"
+                            }).catch((error) => {
+                    // An error happened.
+                                const errorCode = error.code;
+                                const errorMessage = error.message;
+                                console.log(errorMessage);
+
+                            });
+});
+
+  }
+  
+</script>
+<script src="app.js"></script>
+<script src="response.js" defer></script>
+</body>
+</html>
+
+
+
