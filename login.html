@@ -1,182 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-          <meta charset="UTF-8">
-          <meta http-equiv="X-UA-Compatible" content="IE=edge">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Document</title>
-          <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles1.css">
 </head>
+
 <body>
-          <h1></h1>
-          <input type="text" id="username" name="username" placeholder="username" >          
-          <input type="text" id="email" name="email" placeholder="email" >          
-          <input type="password" id="password" name="password" placeholder="password"> 
-          <input type="submit" id="signup" name="signup-submit" value="Signup">
-          <input type="submit" name="loggin" id="loggin" value="Already signed in? Log in now">  
-          <input type="submit" id="login" name="login" value="Log in" class="hidden">  
-          <input type="submit" id="logout" name="logout" value="Logout" class="hidden">
-          <input type="submit" id="siggin" name="siggin" value="Not signed up. Sign up now" class="hidden">
-                 
+
+
+  <div class="container">
+    <div class="drop">
+      <div class="content">
+        <h2>Log in</h2>
+        <form>
+          <div class="inputBox">
+            <input type="text" id="email" name="email" placeholder="Email">
+          </div>
+          <div class="inputBox">
+            <input type="password" id="password" name="password" placeholder="Password">
+          </div>
+          <div class="inputBox">
+            <input type="submit" id="login" name="login" value="Log in">
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <a href="#" class="btns">Forget Password</a>
+    <a href="#" class="btns signup" id="siggin">Sign up</a>
+  </div>
+
+
+
 </body>
 
 <script type="module">
-          // Import the functions you need from the SDKs you need
-          import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
-          import { getDatabase, set, ref, update, onValue } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
-          import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
-          // TODO: Add SDKs for Firebase products that you want to use
-          // https://firebase.google.com/docs/web/setup#available-libraries
-        
-          // Your web app's Firebase configuration
-          const firebaseConfig = {
-            apiKey: "AIzaSyCeKm8nwbvYI__ZtYqrEz7cOcSz1LLVeEA",
-            authDomain: "waterorders-91fbc.firebaseapp.com",
-            projectId: "waterorders-91fbc",
-            storageBucket: "waterorders-91fbc.appspot.com",
-            messagingSenderId: "296690198089",
-            appId: "1:296690198089:web:e8e160d355141495ec0198"
-          };
-        
-          // Initialize Firebase
-          const app = initializeApp(firebaseConfig);
-          const db = getDatabase(app);
-          const auth = getAuth(app)
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-document.querySelector('h1').innerHTML = "Signup"
-          
-          function Loggin(){
-                    document.getElementById("signup").classList.toggle("hidden");
-                    document.getElementById("loggin").classList.toggle("hidden");
-                    document.getElementById("login").classList.toggle("hidden");
-                    document.getElementById("siggin").classList.toggle("hidden");
-                    document.querySelector('h1').innerHTML = 'Login';
-          }
-          
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+  import { getDatabase, set, ref, update, onValue } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-          
-          loggin.addEventListener("click", () => {
-                    document.getElementById("signup").classList.toggle("hidden");
-                    document.getElementById("loggin").classList.toggle("hidden");
-                    document.getElementById("login").classList.toggle("hidden");
-                    document.getElementById("siggin").classList.toggle("hidden");
-                    document.getElementById("username").classList.toggle("hidden");
-                    document.querySelector('h1').innerHTML = 'Login';
-          });
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCeKm8nwbvYI__ZtYqrEz7cOcSz1LLVeEA",
+    authDomain: "waterorders-91fbc.firebaseapp.com",
+    projectId: "waterorders-91fbc",
+    storageBucket: "waterorders-91fbc.appspot.com",
+    messagingSenderId: "296690198089",
+    appId: "1:296690198089:web:e8e160d355141495ec0198"
+  };
 
-          siggin.addEventListener("click", () => {
-                    document.getElementById("signup").classList.toggle("hidden");
-                    document.getElementById("loggin").classList.toggle("hidden");
-                    document.getElementById("login").classList.toggle("hidden");
-                    document.querySelector('h1').innerHTML = 'Login';
-                    document.getElementById("siggin").classList.toggle("hidden");
-                    document.querySelector('h1').innerHTML = "Sign up";
-                    document.getElementById("username").classList.toggle("hidden");
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const auth = getAuth(app)
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-          });
+  siggin.addEventListener("click", () => { window.location.href = "signin.html" })
 
-          signup.addEventListener('click', (e)=> {
-
-          const email = document.getElementById('email').value;
-          const password = document.getElementById('password').value;
-          const username = document.getElementById('username').value;
-          createUserWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-    // Signed in 
-                               const user = userCredential.user;
-                               set(ref(db, 'users/' + user.uid),{
-                                        username: username,
-                                        email : email
-                               });
-
-                               
-                               console.log("User created")
-                               Loggin()
-
-                               alert("welcome " + username)
-
-    // ...
-                    })
-                    .catch((error) => {
-                               const errorCode = error.code;
-                               const errorMessage = error.message;
-                               console.log(errorMessage)
-    // ..
-                    });        
-  });
 
 
   login.addEventListener('click', (e) => {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+    e.preventDefault()
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+        const dt = new Date();
+
+        update(ref(db, 'users/' + user.uid), {
+          last_login: dt,
+        });
+        // ...
+        console.log("Logged in")
 
 
-
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-
-      const dt = new Date();
-
-      update(ref(db, 'users/' + user.uid), {
-        last_login: dt,
-      });
-     // ...
-     console.log("Logged in")
-
-
-     // Get Data
-     const usernameRef = ref(db, 'users/'+user.uid+'/username');
+        // Get Data
+        const usernameRef = ref(db, 'users/' + user.uid + '/username');
 
         onValue(usernameRef, (snapshot) => {
-            const username = snapshot.val();
-            console.log(username);
+          const username = snapshot.val();
+          console.log(username);
+          alert("welcome" + username)
         });
 
-        window.location.href = "index.html"
 
-     
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
-    });
-});
-          const email = document.getElementById('email').value;
-          const password = document.getElementById('password').value;
+        window.location.href = "home.html"
 
 
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        console.log("not a user");
+        localStorage.setItem('error', errorMessage); // store error message in localStorage
+
+      });
+  });
 
 
-  const user = auth.currentUser;
-  onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    // get crrently used user with user object 
-  } else {
-    // User is signed out
-    console.log("user is not signed it")
-    // 
-  }
-});
 
-logout.addEventListener("click" , (e) => {
-          signOut(auth).then(() => {
-  // Sign-out successful.
-               console.log("User log out");
-          }).catch((error) => {
-  // An error happened.
-               const errorCode = error.code;
-               const errorMessage = error.message;
-               console.log(errorMessage);
 
-          });
-})
- 
-        </script>
 
-        
+
+</script>
+
+
 </html>
